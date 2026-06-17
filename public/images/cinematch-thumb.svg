@@ -1,0 +1,18 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#0a0a0a"/>
+  <!-- Film reel circles -->
+  <circle cx="300" cy="280" r="100" stroke="#7C3AED" stroke-width="1.5" fill="none" opacity="0.3"/>
+  <circle cx="300" cy="280" r="60" stroke="#7C3AED" stroke-width="1" fill="none" opacity="0.2"/>
+  <circle cx="300" cy="280" r="20" fill="#7C3AED" opacity="0.15"/>
+  <circle cx="500" cy="280" r="100" stroke="#7C3AED" stroke-width="1.5" fill="none" opacity="0.3"/>
+  <circle cx="500" cy="280" r="60" stroke="#7C3AED" stroke-width="1" fill="none" opacity="0.2"/>
+  <circle cx="500" cy="280" r="20" fill="#7C3AED" opacity="0.15"/>
+  <!-- Connection arc -->
+  <path d="M370 240 Q400 200 430 240" stroke="#7C3AED" stroke-width="1" fill="none" opacity="0.4"/>
+  <path d="M370 320 Q400 360 430 320" stroke="#7C3AED" stroke-width="1" fill="none" opacity="0.4"/>
+  <!-- Accent dots -->
+  <circle cx="400" cy="280" r="4" fill="#7C3AED" opacity="0.6"/>
+  <!-- Text -->
+  <text x="400" y="460" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="white" text-anchor="middle" opacity="0.9">CINEMATCH</text>
+  <text x="400" y="488" font-family="system-ui, sans-serif" font-size="11" fill="white" text-anchor="middle" opacity="0.3" letter-spacing="4">CREATIVE NETWORK</text>
+</svg>

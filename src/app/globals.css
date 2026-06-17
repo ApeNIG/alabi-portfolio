@@ -1,26 +1,209 @@
 @import "tailwindcss";
 
+/*
+ * Visual Direction: Precision Engineering
+ * Typography: Syne (display) + Outfit (body) + JetBrains Mono (meta)
+ * Palette: #0A0A0A base, white text tiers, #EA580C single accent
+ * Signature: Horizontal scan reveal + fine ruled lines
+ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg: #0A0A0A;
+  --color-accent: #EA580C;
+  --color-status: #22c55e;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #0A0A0A;
+  --color-foreground: #FFFFFF;
+  --color-accent: #EA580C;
+  --font-sans: var(--font-outfit);
+  --font-display: var(--font-syne);
+  --font-mono: var(--font-jetbrains-mono);
+  --width-content: 1200px;
+  --width-narrow: 800px;
+  --width-wide: 1600px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* === Base === */
+
+html {
+  scroll-behavior: smooth;
+  cursor: crosshair;
+}
+
+a, button, [role="button"] {
+  cursor: pointer;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #0A0A0A;
+  color: white;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Typography Scale ===
+ * L1 Display: Syne 800, section headings
+ * L2 Title:   Outfit 500, role/email/key info
+ * L3 Heading: Syne 700, card titles
+ * L4 Body:    Outfit 400, descriptions
+ * L5 Label:   JetBrains Mono 400, metadata
+ */
+
+.text-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+.text-label {
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+/* Selection */
+::selection {
+  background-color: #EA580C;
+  color: white;
+}
+
+:focus-visible {
+  outline: 1px solid #EA580C;
+  outline-offset: 2px;
+}
+
+/* ================================
+   Animation System
+   ================================ */
+
+/* Horizontal scan reveal — signature animation */
+@keyframes scanReveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0% 0 0);
+    opacity: 1;
+  }
+}
+
+/* Vertical clip reveal */
+@keyframes clipRevealUp {
+  from {
+    clip-path: inset(100% 0 0 0);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes blink {
+  0%, 45% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes lineDrawRight {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation utilities */
+.animate-scan {
+  animation: scanReveal 1s var(--ease-out-expo) both;
+}
+
+.animate-clip-up {
+  animation: clipRevealUp 0.8s var(--ease-out-expo) both;
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.7s var(--ease-out-expo) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease both;
+}
+
+.animate-line-draw {
+  animation: lineDrawRight 1.2s var(--ease-out-expo) both;
+  transform-origin: left;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.8s var(--ease-out-expo) both;
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Cursor follower */
+.cursor-follower {
+  will-change: transform;
+  transition: opacity 0.3s ease;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Film grain */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.012;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
