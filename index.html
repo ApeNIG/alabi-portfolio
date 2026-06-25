@@ -19,6 +19,7 @@
             --accent: #D97706; --accent-hover: #F59E0B; --accent-dim: rgba(217,119,6,0.08);
             --green: #4ADE80; --green-dim: rgba(74,222,128,0.08);
             --red: #EF4444; --red-dim: rgba(239,68,68,0.08);
+            --steel: #8B9AB8; --steel-dim: rgba(139,154,184,0.06);
             --serif: 'Instrument Serif', serif;
             --sans: 'DM Sans', sans-serif;
             --mono: 'JetBrains Mono', monospace;
@@ -237,6 +238,56 @@
         .hero-rule { transform: scaleX(0); transition: transform 0.8s var(--ease) 0.3s; }
         .hero-rule.visible { transform: scaleX(1); }
 
+        /* ── Evidence Artifacts ── */
+        .evidence { margin: 32px 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; max-width: 640px; }
+        .evidence-header { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-3); padding: 12px 20px; background: var(--surface-2); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+        .evidence-header .dot { width: 6px; height: 6px; border-radius: 50%; }
+        .evidence-header .dot-red { background: var(--red); } .evidence-header .dot-amber { background: var(--accent); } .evidence-header .dot-green { background: var(--green); }
+        .evidence-body { padding: 16px 20px; background: var(--surface); font-family: var(--mono); font-size: 0.72rem; line-height: 1.8; }
+        .log-line { display: flex; gap: 12px; align-items: baseline; }
+        .log-ts { color: var(--text-3); flex-shrink: 0; font-size: 0.65rem; }
+        .log-err { color: var(--red); font-weight: 500; flex-shrink: 0; }
+        .log-warn { color: var(--accent); font-weight: 500; flex-shrink: 0; }
+        .log-msg { color: var(--text-2); }
+        .log-dim { color: var(--text-3); opacity: 0.6; font-style: italic; }
+
+        /* ── Frame Strip (Case 03) ── */
+        .frame-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 32px 0; }
+        .frame { position: relative; }
+        .frame-img { aspect-ratio: 3/4; border-radius: 8px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .frame-img .frame-icon { font-size: 1.4rem; opacity: 0.15; }
+        .frame-img.src { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+        .frame-img.backdrop { background: linear-gradient(135deg, #1a1615 0%, #2a1f1a 100%); }
+        .frame-img.composite { background: linear-gradient(135deg, #1a1a1e 0%, #1e1a22 100%); }
+        .frame-img.final { background: linear-gradient(135deg, #1a1812 0%, #2a2218 100%); border-color: rgba(217,119,6,0.25); box-shadow: 0 0 20px rgba(217,119,6,0.06); }
+        .frame-caption { font-family: var(--mono); font-size: 0.6rem; color: var(--text-3); letter-spacing: 1px; margin-top: 10px; text-transform: uppercase; }
+        .frame-detail { font-size: 0.72rem; color: var(--text-3); margin-top: 4px; opacity: 0.7; font-family: var(--sans); }
+        .frame-arrow { position: absolute; right: -10px; top: 40%; color: var(--border-light); font-size: 0.7rem; z-index: 1; }
+        @media (max-width: 640px) { .frame-strip { grid-template-columns: 1fr 1fr; } .frame-arrow { display: none; } }
+
+        /* ── Query Evidence (Case 04) ── */
+        .evidence-query .q-line { display: flex; gap: 10px; padding: 4px 0; flex-wrap: wrap; }
+        .evidence-query .q-prompt { color: var(--steel); font-weight: 500; flex-shrink: 0; }
+        .evidence-query .q-result { color: var(--green); flex-shrink: 0; opacity: 0.8; }
+        .evidence-query .q-time { color: var(--accent); flex-shrink: 0; }
+        .evidence-query .q-text { color: var(--text-2); }
+        .evidence-query .q-dim { color: var(--text-3); font-size: 0.65rem; }
+
+        /* ── Pull Quote ── */
+        .pull-quote { font-family: var(--serif); font-style: italic; font-size: clamp(1.1rem, 2vw, 1.35rem); color: var(--text); line-height: 1.55; padding: 28px 0 28px 28px; border-left: 2px solid var(--accent); margin: 32px 0; max-width: 560px; opacity: 0.9; }
+        .pull-quote .pq-highlight { color: var(--accent); font-style: normal; font-weight: 400; }
+
+        /* ── Steel accents for system elements ── */
+        .case-highlight .cs-eyebrow { color: var(--steel); }
+        .case-highlight .cs-rule { background: var(--steel); }
+        .case-highlight .sys-node { border-color: rgba(139,154,184,0.15); }
+        .case-highlight .sys-node:hover { border-color: var(--steel); }
+        .case-highlight .sys-node-value { color: var(--steel); }
+        .case-highlight .sys-arrow { color: rgba(139,154,184,0.3); }
+        .case-highlight .sys-loop { border-color: rgba(139,154,184,0.15); }
+        .case-highlight .sys-loop-arrow { color: var(--steel); }
+        .case-highlight .tag:hover { border-color: var(--steel); color: var(--steel); background: var(--steel-dim); }
+
         @media print { .grain, .nav, .progress, .trace-col { display: none; } .hero { min-height: auto; padding: 40px 0; } .section, .case-featured, .case-std, .case-highlight, .manifesto-section, .about-section { padding: 40px 0; } }
     </style>
 </head>
@@ -324,6 +375,11 @@
         <div class="cf-rule reveal"></div>
         <p class="cf-desc reveal">A virtual try-on engine serving 14 fashion brands. AI-generated on-model imagery from flat garment shots, with buyer and stylist approval workflows and automated delivery to the studio's publishing system. I build and operate it end to end.</p>
 
+        <div class="evidence-img reveal" style="margin: 32px 0;">
+            <img src="images/kiosk-dashboard.jpg" alt="Kiosk production overview: 276 sessions across 15 brands" style="width:100%; border-radius: 10px; border: 1px solid var(--border);">
+            <p style="font-family: var(--mono); font-size: 0.6rem; color: var(--text-3); margin-top: 10px; letter-spacing: 1px;">PRODUCTION OVERVIEW &mdash; 276 live sessions across 15 brands, one operational view of generation, approval and delivery.</p>
+        </div>
+
         <div class="timeline reveal">
             <div class="tl-node fail">
                 <div class="tl-dot"></div>
@@ -357,6 +413,16 @@
             </div>
         </div>
 
+        <div class="evidence reveal">
+            <div class="evidence-header"><span class="dot dot-red"></span><span class="dot dot-amber"></span><span class="dot dot-green"></span>Cloud Functions Log &mdash; auto-delivery trigger</div>
+            <div class="evidence-body">
+                <div class="log-line"><span class="log-ts">14:23:07</span><span class="log-err">ERROR</span><span class="log-msg">Memory limit of 256 MiB exceeded with 261 MiB used</span></div>
+                <div class="log-line"><span class="log-ts">14:23:07</span><span class="log-warn">WARN</span><span class="log-msg">Function execution took 12847 ms, finished with status: 'connection error'</span></div>
+                <div class="log-line"><span class="log-ts">14:23:08</span><span class="log-err">ERROR</span><span class="log-msg">Loading 4,012 outfits into memory to read 1 outfit metadata</span></div>
+                <div class="log-line"><span class="log-dim">&hellip; pattern repeated on every shot update, undetected for months</span></div>
+            </div>
+        </div>
+
         <div class="tags reveal">
             <span class="tag">Cloud Functions</span><span class="tag">Firestore</span><span class="tag">Vertex AI</span><span class="tag">Gemini</span><span class="tag">RBAC</span><span class="tag">Data Integrity</span>
         </div>
@@ -385,7 +451,7 @@
 
         <div class="eval-reversed reveal">&times; CONCLUSION REVERSED &mdash; full PIM is net-negative</div>
 
-        <p class="cs-desc reveal" style="margin-bottom: 32px;">Caught a label-trust bias in my own AI adjudicator: it treated the product tag as truth instead of the actual image. Re-ran fully blind, accepted the less convenient answer. Prevented shipping a net-negative feature.</p>
+        <div class="pull-quote reveal">I caught a label-trust bias <span class="pq-highlight">in my own adjudicator</span>. Re-ran fully blind, accepted the less convenient answer, and it prevented shipping a net-negative feature.</div>
 
         <div class="tags reveal">
             <span class="tag">Experimental Design</span><span class="tag">Multi-Agent Adjudication</span><span class="tag">Bias Detection</span><span class="tag">Intellectual Honesty</span>
@@ -400,6 +466,37 @@
         <h3 class="cs-title reveal">Creative AI Compositing</h3>
         <div class="cs-rule reveal"></div>
         <p class="cs-desc reveal">Campaign and editorial imagery where a real model must look believably real inside an AI-generated scene. The craft is making light, scale, and shadow agree.</p>
+
+        <div class="frame-strip reveal">
+            <div class="frame">
+                <div class="frame-img"><img src="images/step-source.jpg" alt="Ecom source shot" style="width:100%;height:100%;object-fit:cover;border-radius:7px;"></div>
+                <div class="frame-caption">01 Ecom source</div>
+                <div class="frame-detail">Real model pixels</div>
+                <span class="frame-arrow">&rarr;</span>
+            </div>
+            <div class="frame">
+                <div class="frame-img"><img src="images/step-backdrop.jpg" alt="Empty branded backdrop" style="width:100%;height:100%;object-fit:cover;border-radius:7px;"></div>
+                <div class="frame-caption">02 Empty backdrop</div>
+                <div class="frame-detail">Branded room, no model</div>
+                <span class="frame-arrow">&rarr;</span>
+            </div>
+            <div class="frame">
+                <div class="frame-img"><img src="images/step-composite.jpg" alt="Flat composite" style="width:100%;height:100%;object-fit:cover;border-radius:7px;"></div>
+                <div class="frame-caption">03 Flat composite</div>
+                <div class="frame-detail">Scale + anchor matched</div>
+                <span class="frame-arrow">&rarr;</span>
+            </div>
+            <div class="frame">
+                <div class="frame-img final"><img src="images/step-final.jpg" alt="Relit and grounded final" style="width:100%;height:100%;object-fit:cover;border-radius:7px;"></div>
+                <div class="frame-caption">04 Relit + grounded</div>
+                <div class="frame-detail">Light, shadow, grain matched</div>
+            </div>
+        </div>
+
+        <div class="evidence-img reveal" style="margin: 24px 0 32px;">
+            <img src="images/looks-grid.jpg" alt="16 composited looks across 4 branded rooms" style="width:100%; max-width: 560px; border-radius: 10px; border: 1px solid var(--border);">
+            <p style="font-family: var(--mono); font-size: 0.6rem; color: var(--text-3); margin-top: 10px; letter-spacing: 1px;">16 LOOKS &mdash; 4 branded rooms, real model pixels throughout, zero identity drift.</p>
+        </div>
 
         <div class="steps reveal">
             <div class="step">
@@ -466,7 +563,17 @@
             <span class="sys-loop-step">Prevent</span>
         </div>
 
-        <p class="sys-desc reveal" style="margin-bottom: 32px;">In a single support session, resolved three production issues by reading stored root causes rather than re-deriving them. Provenance-signed, audit-chained, earned-autonomy gated.</p>
+        <div class="evidence evidence-query reveal">
+            <div class="evidence-header"><span class="dot dot-green"></span>Duro recall &mdash; production support session</div>
+            <div class="evidence-body">
+                <div class="q-line"><span class="q-prompt">query</span><span class="q-text">"delivery pipeline not pushing approved items"</span></div>
+                <div class="q-line"><span class="q-result">recall</span><span class="q-text">fact_20260601 &mdash; OOM in auto-delivery trigger, fixed via single-outfit read</span></div>
+                <div class="q-line"><span class="q-result">recall</span><span class="q-text">incident_rca_042 &mdash; edge-triggered events don't retry on crash</span></div>
+                <div class="q-line"><span class="q-time">resolved</span><span class="q-text">4.2s (vs ~45 min re-derivation)</span></div>
+            </div>
+        </div>
+
+        <p class="sys-desc reveal" style="margin-bottom: 32px;">Provenance-signed, audit-chained, earned-autonomy gated. Every fact, decision, and incident stored as a typed, searchable artifact.</p>
 
         <div class="tags reveal">
             <span class="tag">MCP Protocol</span><span class="tag">HMAC Signing</span><span class="tag">Vector Embeddings</span><span class="tag">RAG</span><span class="tag">Provenance Chains</span>
