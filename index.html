@@ -353,7 +353,7 @@
             <div class="metric reveal"><div class="metric-value" data-target="22700" data-suffix="+">0</div><div class="metric-label">AI images shipped in production</div></div>
             <div class="metric reveal reveal-d1"><div class="metric-value" data-target="14" data-suffix="">0</div><div class="metric-label">Fashion brands live on platform</div></div>
             <div class="metric reveal reveal-d2"><div class="metric-value" data-target="397" data-suffix="">0</div><div class="metric-label">Active platform users</div></div>
-            <div class="metric reveal reveal-d3"><div class="metric-value" data-target="4600" data-suffix="+">0</div><div class="metric-label">Knowledge artifacts in Duro</div></div>
+            <div class="metric reveal reveal-d3"><div class="metric-value" data-target="4250" data-suffix="+">0</div><div class="metric-label">Knowledge artifacts in Duro</div></div>
         </div>
     </div>
 </section>
@@ -545,11 +545,11 @@
         <p class="sys-desc reveal">A self-built agent with structured, persistent memory that compounds knowledge across sessions. The system that turns one-off fixes into institutional knowledge.</p>
 
         <div class="sys-flow reveal">
-            <div class="sys-node"><div class="sys-node-label">Memory</div><div class="sys-node-value">4,600+</div></div>
+            <div class="sys-node"><div class="sys-node-label">Memory</div><div class="sys-node-value">4,250+</div></div>
             <span class="sys-arrow">&rarr;</span>
-            <div class="sys-node"><div class="sys-node-label">Skills</div><div class="sys-node-value">60</div></div>
+            <div class="sys-node"><div class="sys-node-label">Skills</div><div class="sys-node-value">93</div></div>
             <span class="sys-arrow">&rarr;</span>
-            <div class="sys-node"><div class="sys-node-label">Rules</div><div class="sys-node-value">50</div></div>
+            <div class="sys-node"><div class="sys-node-label">Rules</div><div class="sys-node-value">117</div></div>
             <span class="sys-arrow">&rarr;</span>
             <div class="sys-node"><div class="sys-node-label">Governance</div><div class="sys-node-value">HMAC</div></div>
         </div>
@@ -575,8 +575,74 @@
 
         <p class="sys-desc reveal" style="margin-bottom: 32px;">Provenance-signed, audit-chained, earned-autonomy gated. Every fact, decision, and incident stored as a typed, searchable artifact.</p>
 
+        <div class="reveal" style="margin: 0 0 32px; max-width: 640px;">
+            <video src="images/duro-demo.mp4" controls playsinline preload="metadata" style="width:100%; border-radius:10px; border:1px solid var(--border); background:#000; display:block;"></video>
+            <p style="font-family: var(--mono); font-size: 0.6rem; color: var(--text-3); margin-top: 10px; letter-spacing: 1px;">LIVE DEMO &mdash; the epistemic gate, egress guard, and failure-to-rule pipeline firing against real code, not mocks.</p>
+        </div>
+
         <div class="tags reveal">
             <span class="tag">MCP Protocol</span><span class="tag">HMAC Signing</span><span class="tag">Vector Embeddings</span><span class="tag">RAG</span><span class="tag">Provenance Chains</span>
+        </div>
+    </div>
+</section>
+
+<!-- ──── Case 05: Content Pipeline ──── -->
+<section class="case-std">
+    <div class="wrap">
+        <p class="cs-eyebrow reveal">05 &mdash; CONTENT PIPELINE</p>
+        <h3 class="cs-title reveal">Undatone: Automated Editorial Pipeline</h3>
+        <div class="cs-rule reveal"></div>
+        <p class="cs-desc reveal">A design-led culture publication with an automated content pipeline behind it. Each editorial carousel &mdash; such as the Davido <em>Oriad&eacute;</em> set &mdash; is art-directed to a locked brand system, then driven through automated quality gates before a human taps approve and an egress-controlled publisher ships it to Instagram. Design QC bolted to the pipeline, not left to memory.</p>
+
+        <div class="steps reveal">
+            <div class="step">
+                <div class="step-num">01</div>
+                <div class="step-name">Art-direct</div>
+                <div class="step-detail">Card built to locked brand system, real imagery only</div>
+                <span class="step-arrow">&rarr;</span>
+            </div>
+            <div class="step">
+                <div class="step-num">02</div>
+                <div class="step-name">Quality gates</div>
+                <div class="step-detail">Brand &middot; design-critique &middot; adversarial challenger &middot; factual claims</div>
+                <span class="step-arrow">&rarr;</span>
+            </div>
+            <div class="step">
+                <div class="step-num">03</div>
+                <div class="step-name">Human approve</div>
+                <div class="step-detail">A tap is the only path forward &mdash; chat never substitutes</div>
+                <span class="step-arrow">&rarr;</span>
+            </div>
+            <div class="step final">
+                <div class="step-num">04</div>
+                <div class="step-name">Auto-publish</div>
+                <div class="step-detail">Egress-controlled publisher, read-back verified before it ships</div>
+            </div>
+        </div>
+
+        <div class="pull-quote reveal">Bolt the check to the car, <span class="pq-highlight">not to your good intentions.</span> The publisher refuses to post anything that has not passed a valid, recorded design review.</div>
+
+        <div class="tags reveal">
+            <span class="tag">Playwright</span><span class="tag">Meta Graph</span><span class="tag">n8n</span><span class="tag">Design QA Gates</span><span class="tag">Egress Control</span><span class="tag">Brand Systems</span>
+        </div>
+    </div>
+</section>
+
+<!-- ──── Case 06: Creative Engineering ──── -->
+<section class="case-std">
+    <div class="wrap">
+        <p class="cs-eyebrow reveal">06 &mdash; CREATIVE ENGINEERING</p>
+        <h3 class="cs-title reveal">2D to 3D: Procedural Model Pipeline</h3>
+        <div class="cs-rule reveal"></div>
+        <p class="cs-desc reveal">A flat blueprint turned into a real-time WebGL model &mdash; geometry mapped from the drawing, materials tuned against a real reference photo, lit in a studio with physically-based reflections. It outputs a hero still, an interactive drag-to-spin page, and smooth motion: a 360 turntable and a side-on swing, captured frame-by-frame at a locked frame rate rather than screen-recorded, so playback stays buttery.</p>
+
+        <div class="reveal" style="margin: 8px 0 32px; max-width: 560px;">
+            <video src="images/racket-motion.mp4" poster="images/racket-3d.png" controls playsinline preload="metadata" style="width:100%; border-radius:10px; border:1px solid var(--border); background:#000; display:block;"></video>
+            <p style="font-family: var(--mono); font-size: 0.6rem; color: var(--text-3); margin-top: 10px; letter-spacing: 1px;">FRAME-RENDERED &mdash; 360 turntable then side-on swing, locked fps, never a screen grab.</p>
+        </div>
+
+        <div class="tags reveal">
+            <span class="tag">Three.js</span><span class="tag">WebGL</span><span class="tag">PBR</span><span class="tag">Procedural Geometry</span><span class="tag">FFmpeg</span><span class="tag">Playwright</span>
         </div>
     </div>
 </section>
