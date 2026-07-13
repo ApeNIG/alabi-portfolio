@@ -288,7 +288,21 @@
         .case-highlight .sys-loop-arrow { color: var(--steel); }
         .case-highlight .tag:hover { border-color: var(--steel); color: var(--steel); background: var(--steel-dim); }
 
-        @media print { .grain, .nav, .progress, .trace-col { display: none; } .hero { min-height: auto; padding: 40px 0; } .section, .case-featured, .case-std, .case-highlight, .manifesto-section, .about-section { padding: 40px 0; } }
+        /* ── Site-wide elevation: ghost watermarks, atmosphere, editorial detail ── */
+        section, .section, .case-featured, .case-std, .case-highlight, .manifesto-section, .about-section, .contact { position: relative; overflow: hidden; }
+        section > .wrap, .section > .wrap, .case-featured > .wrap, .case-std > .wrap, .case-highlight > .wrap, .manifesto-section > .wrap, .about-section > .wrap, .contact > .wrap { position: relative; z-index: 2; }
+        .ghost { position: absolute; z-index: 0; font-family: var(--serif); font-weight: 400; line-height: 0.7; color: var(--text); opacity: 0.025; letter-spacing: -7px; text-transform: uppercase; pointer-events: none; user-select: none; white-space: nowrap; }
+        .ghost.tr { top: 32px; right: -24px; font-size: clamp(7rem, 19vw, 18rem); text-align: right; }
+        .ghost.tl { top: 48px; left: -24px; font-size: clamp(7rem, 19vw, 18rem); }
+        .ghost.mid { top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: clamp(8rem, 24vw, 24rem); opacity: 0.02; }
+        .atmo::after { content:''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(130% 90% at 82% -8%, rgba(217,119,6,0.055), transparent 56%); }
+        .atmo-l::after { content:''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(120% 85% at 12% 0%, rgba(139,154,184,0.05), transparent 55%); }
+        /* editorial section index tick, reused site-wide */
+        .sec-x { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 3px; color: var(--text-3); display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+        .sec-x::before { content:''; width: 28px; height: 1px; background: var(--accent); }
+        @media (max-width: 700px) { .ghost { opacity: 0.02; } }
+
+        @media print { .grain, .nav, .progress, .trace-col, .ghost { display: none; } .hero { min-height: auto; padding: 40px 0; } .section, .case-featured, .case-std, .case-highlight, .manifesto-section, .about-section { padding: 40px 0; } }
     </style>
 </head>
 <body>
@@ -310,7 +324,7 @@
 </nav>
 
 <!-- ════ HERO ════ -->
-<section class="hero" id="hero">
+<section class="hero atmo" id="hero">
     <div class="wrap">
         <div class="hero-grid">
             <div>
@@ -359,16 +373,18 @@
 </section>
 
 <!-- ════ WORK ════ -->
-<div class="section" id="work" style="padding-bottom: 0;">
+<div class="section atmo" id="work" style="padding-bottom: 0;">
+    <span class="ghost tr">Work</span>
     <div class="wrap">
-        <p class="section-eyebrow reveal">Selected Work</p>
-        <h2 class="section-title reveal">The Work</h2>
-        <p class="section-sub reveal">Case studies from production systems. Every claim traces to shipped work.</p>
+        <p class="sec-x reveal">Selected Work &mdash; 06 case studies</p>
+        <h2 class="section-title reveal" style="font-size: clamp(2.8rem, 7vw, 5rem);">The Work</h2>
+        <p class="section-sub reveal">Case studies from production systems. Every claim traces to shipped work &mdash; and every one is something I designed, built, and operate.</p>
     </div>
 </div>
 
 <!-- ──── Case 01: Featured ──── -->
-<section class="case-featured">
+<section class="case-featured atmo">
+    <span class="ghost tr">01</span>
     <div class="wrap">
         <p class="cf-eyebrow reveal">01 &mdash; PLATFORM</p>
         <h3 class="cf-title reveal">Production AI Fashion Platform</h3>
@@ -430,7 +446,7 @@
 </section>
 
 <!-- ──── Case 02: Evaluation ──── -->
-<section class="case-std">
+<section class="case-std atmo">
     <div class="wrap">
         <p class="cs-eyebrow reveal">02 &mdash; EVALUATION</p>
         <h3 class="cs-title reveal">Evaluation Rigor</h3>
@@ -460,7 +476,7 @@
 </section>
 
 <!-- ──── Case 03: Creative ──── -->
-<section class="case-std">
+<section class="case-std atmo">
     <div class="wrap">
         <p class="cs-eyebrow reveal">03 &mdash; CREATIVE</p>
         <h3 class="cs-title reveal">Creative AI Compositing</h3>
@@ -491,11 +507,6 @@
                 <div class="frame-caption">04 Relit + grounded</div>
                 <div class="frame-detail">Light, shadow, grain matched</div>
             </div>
-        </div>
-
-        <div class="evidence-img reveal" style="margin: 24px 0 32px;">
-            <img src="images/looks-grid.jpg" alt="16 composited looks across 4 branded rooms" style="width:100%; max-width: 560px; border-radius: 10px; border: 1px solid var(--border);">
-            <p style="font-family: var(--mono); font-size: 0.6rem; color: var(--text-3); margin-top: 10px; letter-spacing: 1px;">16 LOOKS &mdash; 4 branded rooms, real model pixels throughout, zero identity drift.</p>
         </div>
 
         <div class="steps reveal">
@@ -537,7 +548,8 @@
 </section>
 
 <!-- ──── Case 04: Highlight ──── -->
-<section class="case-highlight">
+<section class="case-highlight atmo-l">
+    <span class="ghost tr">04</span>
     <div class="wrap">
         <p class="cs-eyebrow reveal">04 &mdash; INFRASTRUCTURE</p>
         <h3 class="cs-title reveal">Duro: Agent Memory &amp; Governance</h3>
@@ -587,12 +599,23 @@
 </section>
 
 <!-- ──── Case 05: Content Pipeline ──── -->
-<section class="case-std">
+<section class="case-std atmo">
     <div class="wrap">
         <p class="cs-eyebrow reveal">05 &mdash; CONTENT PIPELINE</p>
         <h3 class="cs-title reveal">Undatone: Automated Editorial Pipeline</h3>
         <div class="cs-rule reveal"></div>
         <p class="cs-desc reveal">A design-led culture publication with an automated content pipeline behind it. Each editorial carousel &mdash; such as the Davido <em>Oriad&eacute;</em> set &mdash; is art-directed to a locked brand system, then driven through automated quality gates before a human taps approve and an egress-controlled publisher ships it to Instagram. Design QC bolted to the pipeline, not left to memory.</p>
+
+        <div class="reveal" style="margin: 4px 0 40px; display: flex; gap: 18px; flex-wrap: wrap; align-items: flex-start;">
+            <figure style="width: 300px; max-width: 100%; margin: 0;">
+                <video src="images/oriade-motion.mp4" poster="images/oriade-cover.png" controls playsinline loop muted preload="metadata" style="width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:12px; border:1px solid var(--border-light); background:#000; display:block; box-shadow: 0 30px 80px -30px rgba(0,0,0,0.8);"></video>
+                <figcaption style="font-family: var(--mono); font-size: 0.58rem; color: var(--text-3); margin-top: 12px; letter-spacing: 1px; text-transform: uppercase;">Motion cover &mdash; Davido &lsquo;Oriad&eacute;&rsquo;, animated</figcaption>
+            </figure>
+            <figure style="width: 238px; max-width: 100%; margin: 0;">
+                <img src="images/oriade-slide2.png" alt="Davido Oriade carousel slide 2" style="width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:12px; border:1px solid var(--border); display:block;">
+                <figcaption style="font-family: var(--mono); font-size: 0.58rem; color: var(--text-3); margin-top: 12px; letter-spacing: 1px; text-transform: uppercase;">Slide 02 &mdash; published to @undatoneapp</figcaption>
+            </figure>
+        </div>
 
         <div class="steps reveal">
             <div class="step">
@@ -689,10 +712,11 @@
 </section>
 
 <!-- ════ HOW I WORK ════ -->
-<section class="manifesto-section" id="method">
+<section class="manifesto-section atmo-l" id="method">
+    <span class="ghost tr">Method</span>
     <div class="wrap">
-        <p class="section-eyebrow reveal">Principles</p>
-        <h2 class="section-title reveal">How I Work</h2>
+        <p class="sec-x reveal">Principles</p>
+        <h2 class="section-title reveal" style="font-size: clamp(2.8rem, 7vw, 5rem);">How I Work</h2>
         <p class="section-sub reveal" style="margin-bottom: 24px;">Reliability-first. These recur across every project.</p>
         <div class="manifesto-list">
             <div class="m-item reveal"><div class="m-num">01</div><div><div class="m-name">Catch Silent Failures</div><div class="m-desc">The dangerous bugs don't throw errors. They quietly drop work. Hunt them in real telemetry, not assumptions.</div></div></div>
@@ -707,9 +731,10 @@
 </section>
 
 <!-- ════ ABOUT ════ -->
-<section class="about-section" id="about">
+<section class="about-section atmo" id="about">
+    <span class="ghost tr">About</span>
     <div class="wrap">
-        <p class="section-eyebrow reveal">Background</p>
+        <p class="sec-x reveal">Background</p>
         <h2 class="section-title reveal" style="margin-bottom: 40px;">About</h2>
         <div class="about-grid">
             <div class="about-text">
