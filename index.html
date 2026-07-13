@@ -391,9 +391,31 @@
         <div class="cf-rule reveal"></div>
         <p class="cf-desc reveal">A virtual try-on engine serving 14 fashion brands. AI-generated on-model imagery from flat garment shots, with buyer and stylist approval workflows and automated delivery to the studio's publishing system. I build and operate it end to end.</p>
 
-        <div class="evidence-img reveal" style="margin: 32px 0;">
-            <img src="images/kiosk-dashboard.jpg" alt="Kiosk production overview: 276 sessions across 15 brands" style="width:100%; border-radius: 10px; border: 1px solid var(--border);">
-            <p style="font-family: var(--mono); font-size: 0.6rem; color: var(--text-3); margin-top: 10px; letter-spacing: 1px;">PRODUCTION OVERVIEW &mdash; 276 live sessions across 15 brands, one operational view of generation, approval and delivery.</p>
+        <div class="plat reveal" style="margin: 36px 0;">
+            <style>
+                .plat figure { margin: 0; }
+                .plat-hero { margin: 0 0 18px; }
+                .plat-hero img { width: 100%; border-radius: 12px; border: 1px solid var(--border-light); box-shadow: 0 44px 110px -44px rgba(0,0,0,0.85); display: block; }
+                .plat-cap { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text-3); margin-top: 12px; line-height: 1.5; }
+                .plat-cap b { color: var(--text-2); font-weight: 500; }
+                .plat-pair { display: grid; grid-template-columns: 1.32fr 1fr; gap: 18px; align-items: start; }
+                .plat-pair img { width: 100%; border-radius: 10px; border: 1px solid var(--border); display: block; }
+                @media (max-width: 640px) { .plat-pair { grid-template-columns: 1fr; gap: 24px; } }
+            </style>
+            <figure class="plat-hero">
+                <img src="images/platform-edit.jpg" alt="Platform edit queue — configuring a product-shot generation">
+                <figcaption class="plat-cap"><b>The edit queue</b> &mdash; per shot: model &middot; reference &middot; background &middot; prompt &middot; feedback, with a cross-reference view of every angle</figcaption>
+            </figure>
+            <div class="plat-pair">
+                <figure>
+                    <img src="images/platform-detail.jpg" alt="Platform detail pass — per-garment QC and re-generation">
+                    <figcaption class="plat-cap"><b>Detail &amp; QC</b> &mdash; per-garment re-generation; a &lsquo;fabric incorrect&rsquo; flag sent back through the loop</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/kiosk-dashboard.jpg" alt="Production overview across 15 brands">
+                    <figcaption class="plat-cap"><b>Operations</b> &mdash; 276 sessions, 15 brands, one view</figcaption>
+                </figure>
+            </div>
         </div>
 
         <div class="timeline reveal">
