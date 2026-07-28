@@ -784,6 +784,157 @@
             <div class="so-item"><span class="so-val">9.0</span><span class="so-label">external design gate</span></div>
         </div>
 
+        <!-- the reading experience, live: a drag-to-turn storybook prototype -->
+        <style>
+            .fb-wrap { margin: 44px 0 40px; }
+            .fb-cap { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-3); margin-bottom: 18px; }
+            .fb-cap b { color: var(--accent); font-weight: 500; }
+            .fb-scene { perspective: 2000px; width: min(100%, 560px); }
+            .fb-book { position: relative; width: 100%; aspect-ratio: 2 / 1.32; transform-style: preserve-3d; transform: translateX(var(--fbshift, -25%)) rotateX(7deg); transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.3, 1); touch-action: pan-y; }
+            .fb-book::before { content: ''; position: absolute; left: 5%; right: 5%; bottom: -6%; height: 10%; background: radial-gradient(50% 100% at 50% 50%, rgba(0,0,0,0.6), transparent 70%); filter: blur(5px); transform: translateZ(-40px); }
+            .fb-leaf { position: absolute; left: 50%; top: 0; width: 50%; height: 100%; transform-origin: left center; transform-style: preserve-3d; transition: transform 0.9s cubic-bezier(0.36, 0.1, 0.26, 1); cursor: grab; }
+            .fb-leaf.dragging { transition: none; cursor: grabbing; }
+            .fb-leaf.flipped { transform: rotateY(-180deg); }
+            .fb-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden; background: #FFF7EA; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 7%; gap: 5%; }
+            .fb-face.back { transform: rotateY(180deg); }
+            .fb-face.recto { border-radius: 3px 10px 10px 3px; box-shadow: inset 10px 0 18px -12px rgba(60, 40, 15, 0.5); }
+            .fb-face.verso { border-radius: 10px 3px 3px 10px; box-shadow: inset -10px 0 18px -12px rgba(60, 40, 15, 0.5); }
+            .fb-face .sheen { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(calc(90deg + var(--fbsheen, 0deg)), transparent 40%, rgba(50, 33, 12, 0.32) 100%); opacity: var(--fbshade, 0); transition: opacity 0.9s ease; }
+            .fb-leaf.dragging .fb-face .sheen { transition: none; }
+            .fb-cover { background: radial-gradient(120% 120% at 30% 20%, #24785a 0%, #1C5A43 55%, #143c2c 100%); }
+            .fb-cover .fb-arch { width: 30%; }
+            .fb-cover h4 { font-family: var(--serif); font-weight: 600; color: #fde68a; font-size: clamp(1.05rem, 2.6vw, 1.5rem); line-height: 1.15; letter-spacing: -0.5px; margin: 0; }
+            .fb-cover .fb-by { font-family: var(--mono); font-size: 0.5rem; letter-spacing: 2.5px; text-transform: uppercase; color: #bfe3d2; }
+            .fb-face img { width: 62%; border-radius: 10px; box-shadow: 0 5px 14px -6px rgba(60, 40, 15, 0.45); display: block; }
+            .fb-face p { color: #41352a; font-size: clamp(0.62rem, 1.55vw, 0.82rem); line-height: 1.55; margin: 0; max-width: 30ch; }
+            .fb-face p b { color: #1C5A43; }
+            .fb-face p .fb-gold { color: #c77414; }
+            .fb-end { background: radial-gradient(120% 120% at 70% 80%, #24785a 0%, #1C5A43 55%, #143c2c 100%); }
+            .fb-end p { color: #d7ecd2; font-family: var(--serif); font-size: clamp(0.8rem, 2vw, 1.05rem); font-style: italic; }
+            .fb-end .fb-colo { font-family: var(--mono); font-size: 0.48rem; letter-spacing: 2px; text-transform: uppercase; color: #7fae97; }
+            @media (prefers-reduced-motion: reduce) { .fb-leaf, .fb-book, .fb-face .sheen { transition: none !important; } }
+        </style>
+        <div class="fb-wrap reveal">
+            <p class="fb-cap"><b>The reading experience, live</b> &mdash; drag a page corner, or tap to turn. A prototype of the Story Quest reader.</p>
+            <div class="fb-scene">
+                <div class="fb-book" id="fbBook">
+                    <div class="fb-leaf">
+                        <div class="fb-face front recto fb-cover">
+                            <svg class="fb-arch" viewBox="0 0 120 128" aria-hidden="true"><path d="M27 110 L27 58 A33 33 0 0 1 93 58 L93 110" fill="none" stroke="#F4F1E9" stroke-width="13.5" stroke-linejoin="round"/><rect x="17" y="108" width="32" height="13" rx="6.5" fill="#F4F1E9"/><rect x="71" y="108" width="32" height="13" rx="6.5" fill="#F4F1E9"/><circle cx="60" cy="64" r="19" fill="#F7972E"/><circle cx="60" cy="64" r="9.5" fill="none" stroke="#F4F1E9" stroke-width="3.4"/></svg>
+                            <h4>The Little<br>Golden Door</h4>
+                            <span class="fb-by">An Iba Storybook</span>
+                            <span class="sheen"></span>
+                        </div>
+                        <div class="fb-face back verso">
+                            <p style="color:#7a6a58; font-style:italic;">For every kid who ever opened a door by learning something new.</p>
+                            <span class="sheen"></span>
+                        </div>
+                    </div>
+                    <div class="fb-leaf">
+                        <div class="fb-face front recto">
+                            <img src="images/iba-page-snow.webp" alt="Maya in the snow beside a tall friendly thermometer">
+                            <p>In Maya's house there was a <b>little golden door</b>, and it was always locked.</p>
+                            <span class="sheen"></span>
+                        </div>
+                        <div class="fb-face back verso">
+                            <p>It didn't open for metal keys. It opened for <span class="fb-gold">new things</span> &mdash; freshly learned, still warm.</p>
+                            <span class="sheen"></span>
+                        </div>
+                    </div>
+                    <div class="fb-leaf">
+                        <div class="fb-face front recto">
+                            <img src="images/iba-page-door.webp" alt="Maya stepping through the golden door standing on an open book">
+                            <p>Click. The door swung open at last. Behind it? <b>Tomorrow's door.</b></p>
+                            <span class="sheen"></span>
+                        </div>
+                        <div class="fb-face back verso fb-end">
+                            <p>Every door opens the same way.</p>
+                            <span class="fb-colo">Prototype &mdash; the Story Quest reader</span>
+                            <span class="sheen"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+        (function () {
+            var book = document.getElementById('fbBook');
+            var leaves = Array.prototype.slice.call(book.querySelectorAll('.fb-leaf'));
+            var N = leaves.length, turned = 0;
+            var drag = null;
+
+            function render() {
+                leaves.forEach(function (leaf, i) {
+                    var flipped = i < turned;
+                    leaf.classList.toggle('flipped', flipped);
+                    leaf.style.zIndex = flipped ? (i + 1) : (N - i);
+                    leaf.style.transform = '';
+                    leaf.querySelectorAll('.sheen').forEach(function (s) {
+                        s.style.setProperty('--fbshade', '');
+                    });
+                });
+                book.style.setProperty('--fbshift', turned === 0 ? '-25%' : (turned === N ? '25%' : '0%'));
+            }
+
+            function leafFor(dx) {
+                if (dx < 0 && turned < N) return { leaf: leaves[turned], forward: true };
+                if (dx > 0 && turned > 0) return { leaf: leaves[turned - 1], forward: false };
+                return null;
+            }
+
+            book.addEventListener('pointerdown', function (e) {
+                drag = { x0: e.clientX, target: null, moved: false };
+                try { book.setPointerCapture && book.setPointerCapture(e.pointerId); } catch (err) { /* synthetic or stale pointer */ }
+            });
+            book.addEventListener('pointermove', function (e) {
+                if (!drag) return;
+                var dx = e.clientX - drag.x0;
+                if (!drag.moved && Math.abs(dx) < 8) return;
+                if (!drag.target) {
+                    var t = leafFor(dx);
+                    if (!t) return;
+                    drag.target = t;
+                    t.leaf.classList.add('dragging');
+                    t.leaf.style.zIndex = N + 2;
+                }
+                drag.moved = true;
+                var w = book.getBoundingClientRect().width / 2;
+                var prog;
+                if (drag.target.forward) {
+                    prog = Math.max(0, Math.min(1, -dx / (w * 1.4)));
+                    drag.target.leaf.style.transform = 'rotateY(' + (-180 * prog) + 'deg)';
+                } else {
+                    prog = Math.max(0, Math.min(1, dx / (w * 1.4)));
+                    drag.target.leaf.style.transform = 'rotateY(' + (-180 + 180 * prog) + 'deg)';
+                }
+                var face = drag.target.forward ? '.fb-face.front .sheen' : '.fb-face.back .sheen';
+                var s = drag.target.leaf.querySelector(face);
+                if (s) s.style.setProperty('--fbshade', String(Math.sin(prog * Math.PI) * 0.9));
+                drag.prog = prog;
+            });
+            function endDrag() {
+                if (!drag) return;
+                var d = drag; drag = null;
+                if (d.target) {
+                    d.target.leaf.classList.remove('dragging');
+                    var commit = (d.prog || 0) > 0.42;
+                    if (d.target.forward) { if (commit) turned++; }
+                    else { if (commit) turned--; }
+                    render();
+                } else if (!d.moved) {
+                    /* plain tap: left half back, right half forward */
+                    var r = book.getBoundingClientRect();
+                    if (d.x0 < r.left + r.width / 2) { if (turned > 0) { turned--; render(); } }
+                    else if (turned < N) { turned++; render(); }
+                }
+            }
+            book.addEventListener('pointerup', endDrag);
+            book.addEventListener('pointercancel', endDrag);
+            book.addEventListener('pointerleave', function () { if (drag && drag.target) endDrag(); });
+            render();
+        })();
+        </script>
+
         <div class="pull-quote reveal">Children can post feedback notes to their parents from inside the app &mdash; <span class="pq-highlight">the users have a voice in the roadmap.</span></div>
 
         <div class="tags reveal">
