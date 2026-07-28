@@ -376,7 +376,7 @@
 <div class="section atmo" id="work" style="padding-bottom: 0;">
     <span class="ghost tr">Work</span>
     <div class="wrap">
-        <p class="sec-x reveal">Selected Work &mdash; 06 case studies</p>
+        <p class="sec-x reveal">Selected Work &mdash; 07 case studies</p>
         <h2 class="section-title reveal" style="font-size: clamp(2.8rem, 7vw, 5rem);">The Work</h2>
         <p class="section-sub reveal">Case studies from production systems. Every claim traces to shipped work &mdash; and every one is something I designed, built, and operate.</p>
     </div>
@@ -733,6 +733,65 @@
     </div>
 </section>
 
+<!-- ──── Case 07: Product ──── -->
+<section class="case-std atmo">
+    <div class="wrap">
+        <p class="cs-eyebrow reveal">07 &mdash; PRODUCT</p>
+        <h3 class="cs-title reveal">Iba: A Family Learning Arcade</h3>
+        <div class="cs-rule reveal"></div>
+        <p class="cs-desc reveal">A closed-loop learning product for children aged 6&ndash;11, live and used daily by the toughest user base there is: real kids. Study earns game time through a &lsquo;Banked-Time Door&rsquo; economy that is server-enforced and deliberately un-farmable &mdash; every reward requires a real pass, grants are idempotent, and access gates re-arm on leave. Each child gets an adaptive difficulty engine and their own illustrated mascot world; puzzle ladders are solver-verified, every level's minimum solution machine-proven before a child sees it. Household row-level security means the public API returns nothing without the family's own session &mdash; privacy is architecture, not policy.</p>
+
+        <div class="reveal" style="margin: 4px 0 40px; display: flex; gap: 18px; flex-wrap: wrap; align-items: flex-start;">
+            <figure style="width: 340px; max-width: 100%; margin: 0;">
+                <img src="images/iba-doors.png" alt="Iba login — three doors, each opening onto a child's own world" style="width:100%; border-radius:12px; border:1px solid var(--border-light); display:block; box-shadow: 0 30px 80px -30px rgba(0,0,0,0.8);">
+                <figcaption style="font-family: var(--mono); font-size: 0.58rem; color: var(--text-3); margin-top: 12px; letter-spacing: 1px; text-transform: uppercase;">Three doors, three worlds &mdash; names shown are stand-ins</figcaption>
+            </figure>
+            <figure style="width: 340px; max-width: 100%; margin: 0;">
+                <img src="images/iba-study.png" alt="Iba study room — streaming-style browse with an authored illustration system" style="width:100%; border-radius:12px; border:1px solid var(--border); display:block;">
+                <figcaption style="font-family: var(--mono); font-size: 0.58rem; color: var(--text-3); margin-top: 12px; letter-spacing: 1px; text-transform: uppercase;">The study room &mdash; authored AI illustration system, one locked art direction</figcaption>
+            </figure>
+        </div>
+
+        <div class="steps reveal">
+            <div class="step">
+                <div class="step-num">01</div>
+                <div class="step-name">Study earns</div>
+                <div class="step-detail">Adaptive rounds; a real 60% pass or no minutes</div>
+                <span class="step-arrow">&rarr;</span>
+            </div>
+            <div class="step">
+                <div class="step-num">02</div>
+                <div class="step-name">The Door banks</div>
+                <div class="step-detail">Server-side wallet; idempotent grants, daily caps</div>
+                <span class="step-arrow">&rarr;</span>
+            </div>
+            <div class="step">
+                <div class="step-num">03</div>
+                <div class="step-name">Play spends</div>
+                <div class="step-detail">Arcade timer drains the wallet; gates re-arm on leave</div>
+                <span class="step-arrow">&rarr;</span>
+            </div>
+            <div class="step final">
+                <div class="step-num">04</div>
+                <div class="step-name">Data replans</div>
+                <div class="step-detail">Weekly content runs plant material where a child struggled</div>
+            </div>
+        </div>
+
+        <div class="steps-outcome reveal">
+            <div class="so-item"><span class="so-val">3</span><span class="so-label">daily users (my kids)</span></div>
+            <div class="so-item"><span class="so-val">48</span><span class="so-label">solver-proven levels</span></div>
+            <div class="so-item"><span class="so-val">9.0</span><span class="so-label">external design gate</span></div>
+        </div>
+
+        <div class="pull-quote reveal">Children can post feedback notes to their parents from inside the app &mdash; <span class="pq-highlight">the users have a voice in the roadmap.</span></div>
+
+        <div class="tags reveal">
+            <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Supabase</span><span class="tag">Postgres RLS</span><span class="tag">BFS Solvers</span><span class="tag">Reward Economics</span><span class="tag">Design Gates</span>
+        </div>
+    </div>
+</section>
+
 <!-- ════ HOW I WORK ════ -->
 <section class="manifesto-section atmo-l" id="method">
     <span class="ghost tr">Method</span>
@@ -767,6 +826,7 @@
                     <div class="also-item"><strong>Algorithmic Trading Platform</strong> &mdash; <span>Autonomous strategies on Linux server, real capital, two-way broker reconciliation, automatic kill thresholds.</span></div>
                     <div class="also-item"><strong>Cinematch</strong> &mdash; <span>Full-stack creative professional network. Next.js, Supabase, live in production.</span></div>
                     <div class="also-item"><strong>Undatone</strong> &mdash; <span>Culture intelligence publication with interactive data-driven artist dossiers.</span></div>
+                    <div class="also-item"><strong>Iba</strong> &mdash; <span>Family learning arcade for ages 6&ndash;11: honest reward economy, adaptive difficulty, RLS privacy. Live, used daily.</span></div>
                 </div>
             </div>
             <div class="skills-col">
